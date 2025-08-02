@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AnandUtsav - 2025 (Karnataka)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Bootstrap CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <img
+    src="Art-of-Living_Logo.png"
+    alt="Art of Living Logo"
+    class="logo"
+  />
+
+  <div class="main-title">AnandUtsav - 2025 (Karnataka)</div>
+  <div class="main-title">ಅನಂದೋತ್ಸವ - ೨೦೨೫ (ಕರ್ನಾಟಕ)</div>
+
+  <div id="search-section" class="container-fluid">
+    <form
+      id="search-form"
+      class="row g-4"
+      onsubmit="event.preventDefault(); performSearch();"
+    >
+      <div class="col-md-4 col-12">
+        <label for="district" class="form-label"
+          >Search by District (ಜಿಲ್ಲೆ ಮೂಲಕ ಹುಡುಕಿ)</label
+        >
+        <select id="district" class="form-select">
+          <option value="">-- Select District --</option>
+          <option value="Bagalkote">Bagalkote (ಬಾಗಲಕೋಟೆ)</option>
+          <option value="Ballari">Ballari (ಬಳ್ಳಾರಿ)</option>
+          <option value="Belagavi">Belagavi (ಬೆಳಗಾವಿ)</option>
+          <option value="Bengaluru Urban">Bengaluru Urban (ಬೆಂಗಳೂರು ನಗರ)</option>
+          <option value="Bengaluru Rural">Bengaluru Rural (ಬೆಂಗಳೂರು ಗ್ರಾಮಾಂತರ)</option>
+          <option value="Bidar">Bidar (ಬಿದರ್)</option>
+          <option value="Chamarajanagar">Chamarajanagar (ಚಾಮರಾಜನಗರ)</option>
+          <option value="Chikkaballapur">Chikkaballapur (ಚಿಕ್ಕಬಳ್ಳಾಪುರ)</option>
+          <option value="Chikkamagaluru">Chikkamagaluru (ಚಿಕ್ಕಮಗಳೂರು)</option>
+          <option value="Chitradurga">Chitradurga (ಚಿತ್ರದುರ್ಗ)</option>
+          <option value="Dakshina Kannada">Dakshina Kannada (ದಕ್ಷಿಣ ಕನ್ನಡ)</option>
+          <option value="Davanagere">Davanagere (ದಾವಣಗೆರೆ)</option>
+          <option value="Dharwad">Dharwad (ಧಾರವಾಡ)</option>
+          <option value="Gadag">Gadag (ಗದಗ)</option>
+          <option value="Kalaburagi">Kalaburagi (ಕಲಬುರಗಿ)</option>
+          <option value="Hassan">Hassan (ಹassan)</option>
+          <option value="Haveri">Haveri (ಹಾವೇರಿ)</option>
+          <option value="Kodagu">Kodagu (ಕೊಡಗು)</option>
+          <option value="Kolar">Kolar (ಕೊಲಾರ)</option>
+          <option value="Koppal">Koppal (ಕೊಪ್ಪಲ್)</option>
+          <option value="Mandya">Mandya (ಮಂಡ್ಯ)</option>
+          <option value="Mysuru">Mysuru (ಮೈಸೂರು)</option>
+          <option value="Raichur">Raichur (ರಾಯಚೂರು)</option>
+          <option value="Ramanagara">Ramanagara (ರಾಮನಗರ)</option>
+          <option value="Shivamogga">Shivamogga (ಶಿವಮೊಗ್ಗ)</option>
+          <option value="Tumakuru">Tumakuru (ತುಮಕೂರು)</option>
+          <option value="Udupi">Udupi (ಉಡುಪಿ)</option>
+          <option value="Uttara Kannada">Uttara Kannada (ಉತ್ತರ ಕನ್ನಡ)</option>
+          <option value="Vijayapura">Vijayapura (ವಿಜಯಪುರ)</option>
+          <option value="Yadgir">Yadgir (ಯಾದಗಿರಿ)</option>
+          <option value="Vijayanagara">Vijayanagara (ವಿಜಯನಗರ)</option>
+        </select>
+      </div>
+      <div class="col-md-4 col-12">
+        <label for="pincode" class="form-label"
+          >Search by Pincode (ಪಿನ್ ಕೋಡ್ ಮೂಲಕ ಹುಡುಕಿ)</label
+        >
+        <input
+          type="text"
+          id="pincode"
+          class="form-control"
+          maxlength="6"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          placeholder="Enter 6 digit Pincode"
+        />
+      </div>
+      <div class="col-md-4 col-12">
+        <label for="address" class="form-label"
+          >Search by Address (ವಿಳಾಸದ ಮೂಲಕ ಹುಡುಕಿ)</label
+        >
+        <input
+          type="text"
+          id="address"
+          class="form-control"
+          placeholder="Enter Address"
+        />
+      </div>
+      <div class="col-12 d-flex justify-content-center gap-3 pt-2">
+        <button class="btn btn-warning px-4 shadow-sm fw-bold" type="submit">Search (ಹುಡುಕಿ)</button>
+        <button id="btn-clear" class="btn btn-secondary px-4 shadow-sm fw-bold" type="button">Clear Filter (ಫಿಲ್ಟರ್ ತೆರವು ಮಾಡಿ)</button>
+        <button id="btn-display-all" class="btn btn-info px-4 shadow-sm fw-bold text-white" type="button">Display All (ಎಲ್ಲಾ ತೋರಿಸಿ)</button>
+      </div>
+    </form>
+
+    <div
+      class="no-result"
+      id="no-result"
+      style="display: none"
+    >
+      No course found in the given location, please search in a nearby location.<br />
+      (ನಿಮ್ಮ ನೀಡಿದ ಸ್ಥಳದಲ್ಲಿ ಕೋರ್ಸ್ ಸಿಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಹತ್ತಿರದ ಸ್ಥಳದಲ್ಲಿ ಹುಡುಕಿ.)
+    </div>
+
+    <div id="results" class="table-container"></div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
