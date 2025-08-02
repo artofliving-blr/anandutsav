@@ -153,7 +153,7 @@ function performSearch() {
     results = courses.filter(c => c.district === district);
   }
   if (pincode) {
-    const pinResults = courses.filter(c => c.pin_code === pincode);
+    const pinResults = courses.filter(c => c.pin_code === parseInt(pincode));
     pinResults.forEach(item => {
       if (!results.includes(item)) results.push(item);
     });
