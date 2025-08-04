@@ -218,12 +218,15 @@ function sendChatbotMessage(){
 }
 
 // Floating button toggles chatbot window
-document.getElementById('chatbot-toggle').onclick = function(){
-  const widget = document.getElementById('chatbot-widget');
-  widget.style.display = widget.style.display === 'block' ? 'none' : 'block';
-  document.getElementById('chatbot-messages').scrollTop = document.getElementById('chatbot-messages').scrollHeight;
-  document.getElementById('chatbot-input').focus();
-};
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('chatbot-toggle').onclick = function () {
+    const widget = document.getElementById('chatbot-widget');
+    widget.style.display = widget.style.display === 'block' ? 'none' : 'block';
+    const msgs = document.getElementById('chatbot-messages');
+    msgs.scrollTop = msgs.scrollHeight;
+    document.getElementById('chatbot-input').focus();
+  };
+});
 
 // Ensure the data is synced after courses are loaded
 window.addEventListener('DOMContentLoaded', ()=>{
