@@ -175,20 +175,12 @@ function performSearch() {
   displayCourses(results);
 }
 
-// Chatbot data logic
-let chatbotCoursesCache = [];
-
-function chatbotLoadCourses() {
-  // Share the loaded courses from rest of page
-  chatbotCoursesCache = courses;
-}
-
 // Minimal matching function: tries to respond based on question content
 function generateChatbotAnswer(question) {
   const q = question.toLowerCase();
   // Check for 'district'
   let match = q.match(/(in|from|of)\\s+([a-zA-Z ]+)/);
-  for(const c of chatbotCoursesCache){
+  for(const c of courses){
     // Example: "yoga in mysuru", "courses in bengaluru"
     if(q.includes(c.district.toLowerCase())) {
       return `Yes, we have "${c.course_type}" in ${c.district}. contact: ${c.contact} <a href="${c.register_link}" target="_blank">Register here</a>.`;
@@ -226,11 +218,6 @@ window.addEventListener('DOMContentLoaded', () => {
     msgs.scrollTop = msgs.scrollHeight;
     document.getElementById('chatbot-input').focus();
   };
-});
-
-// Ensure the data is synced after courses are loaded
-window.addEventListener('DOMContentLoaded', ()=>{
-  chatbotLoadCourses();
 });
 
 window.addEventListener('DOMContentLoaded', () => {
