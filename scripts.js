@@ -94,7 +94,7 @@ function displayCourses(data) {
 
   currentData.forEach((course) => {
     // Remove spaces, hyphens, plus signs for display/click
-    const cleanNo = course.contact.replace(/[^0-9]/g, "");
+    const cleanNo = course.contact.toString().replace(/[^0-9]/g, "");
     html += `<tr>
       <td>${course.course_type}</td>
       <td><a href="${course.register_link}" target="_blank" class="btn btn-primary btn-sm">Register</a></td>
