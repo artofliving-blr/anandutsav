@@ -175,6 +175,61 @@ function performSearch() {
   displayCourses(results);
 }
 
+// Chatbot data logic
+let chatbotCoursesCache = [];
+
+function chatbotLoadCourses() {
+  // Share the loaded courses from rest of page
+  chatbotCoursesCache = courses;
+}
+
+// Minimal matching function: tries to respond based on question content
+function generateChatbotAnswer(question) {
+  const q = question.toLowerCase();
+  // Check for 'district'
+  let match = q.match(/(in|from|of)\\s+([a-zA-Z ]+)/);
+  for(const c of chatbotCoursesCache){
+    // Example: "yoga in mysuru", "courses in bengaluru"
+    if(q.includes(c.district.toLowerCase())) {
+      return `Yes, we have "${c.course_type}" in ${c.district}. contact: ${c.contact} <a href="${c.register_link}" target="_blank">Register here</a>.`;
+    }
+    // By pin_code
+    if(q.includes(c.pin_code.toLowerCase())) {
+      return `Yes, we have <b>${c.course_type}</b> at ${c.pin_code}, contact: ${c.contact} <a href="${c.register_link}" target="_blank">Register here</a>.`;
+    }
+  }
+  return "Sorry, I could not find any matching info. Try 'Happiness Program in Mysuru' or 'Happiness Program at 560068'.";
+}
+
+// Chatbot message handler
+function sendChatbotMessage(){
+  const input = document.getElementById('chatbot-input');
+  const val = input.value.trim();
+  if(!val) return;
+  input.value = '';
+  const msgBox = document.getElementById('chatbot-messages');
+  msgBox.innerHTML += `<div class="mb-2"><span class="bg-primary text-white rounded px-2 py-1 d-inline-block float-end">${val}</span></div><div class="clearfix"></div>`;
+  // Get response
+  const ans = generateChatbotAnswer(val);
+  setTimeout(()=>{
+    msgBox.innerHTML += `<div class="mb-2"><span class="bg-light border rounded px-2 py-1 d-inline-block float-start">${ans}</span></div><div class="clearfix"></div>`;
+    msgBox.scrollTop = msgBox.scrollHeight;
+  },600);
+}
+
+// Floating button toggles chatbot window
+document.getElementById('chatbot-toggle').onclick = function(){
+  const widget = document.getElementById('chatbot-widget');
+  widget.style.display = widget.style.display === 'block' ? 'none' : 'block';
+  document.getElementById('chatbot-messages').scrollTop = document.getElementById('chatbot-messages').scrollHeight;
+  document.getElementById('chatbot-input').focus();
+};
+
+// Ensure the data is synced after courses are loaded
+window.addEventListener('DOMContentLoaded', ()=>{
+  chatbotLoadCourses();
+});
+
 window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-clear').onclick = clearFilters;
   document.getElementById('btn-display-all').onclick = displayAllCourses;
