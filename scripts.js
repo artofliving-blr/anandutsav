@@ -186,7 +186,7 @@ function generateChatbotAnswer(question) {
       return `Yes, we have "${c.course_type}" in ${c.district}. contact: ${c.contact} <a href="${c.register_link}" target="_blank">Register here</a>.`;
     }
     // By pin_code
-    if(q.includes(c.pin_code.toLowerCase())) {
+    if(q.includes(c.pin_code)) {
       return `Yes, we have <b>${c.course_type}</b> at ${c.pin_code}, contact: ${c.contact} <a href="${c.register_link}" target="_blank">Register here</a>.`;
     }
   }
