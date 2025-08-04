@@ -93,6 +93,8 @@ function displayCourses(data) {
   <tbody>`;
 
   currentData.forEach((course) => {
+    // Remove spaces, hyphens, plus signs for display/click
+    const cleanNo = course.contact.replace(/[^0-9]/g, "");
     html += `<tr>
       <td>${course.course_type}</td>
       <td><a href="${course.register_link}" target="_blank" class="btn btn-primary btn-sm">Register</a></td>
@@ -102,7 +104,11 @@ function displayCourses(data) {
       <td>${course.address}</td>
       <td>${course.pin_code}</td>
       <td>${course.teachers}</td>
-      <td>${course.contact}</td>
+      <td>
+        <span>${course.contact}</span>
+        <a href="tel:${cleanNo}" title="Call" class="ms-2 text-success" style="font-size:1.3em;"><i class="bi bi-telephone-fill"></i></a>
+        <a href="https://wa.me/${cleanNo}" title="Message on WhatsApp" target="_blank" class="ms-2 text-success" style="font-size:1.3em;"><i class="bi bi-whatsapp"></i></a>
+      </td>
       <td>${course.language}</td>
     </tr>`;
   });
