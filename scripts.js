@@ -80,13 +80,13 @@ function displayCourses(data) {
     <tr>
       <th>Course Type</th>
       <th>Registration Link</th>
-      <th id="th-start">Start Date</th>
-      <th>End Date</th>
-      <th id="th-district">District</th>
-      <th>Address</th>
-      <th id="th-pin_code">PinCode</th>
+      <th id="th-start">Date</th>
+      <th>Timings</th>
       <th>Teachers</th>
       <th>Contact</th>
+      <th>Address</th>
+      <th id="th-district">District</th>
+      <th id="th-pin_code">PinCode</th>
       <th>Language</th>
     </tr>
   </thead>
@@ -98,17 +98,17 @@ function displayCourses(data) {
     html += `<tr>
       <td>${course.course_type}</td>
       <td><a href="${course.register_link}" target="_blank" class="btn btn-primary btn-sm">Register</a></td>
-      <td>${course.start}</td>
-      <td>${course.end}</td>
-      <td>${course.district}</td>
-      <td>${course.address}</td>
-      <td>${course.pin_code}</td>
+      <td>${course.start} - ${course.end}</td>
+      <td>${course.timing}</td>
       <td>${course.teachers}</td>
       <td>
         <span>${course.contact}</span>
         <a href="tel:${cleanNo}" title="Call" class="ms-2 text-success" style="font-size:1.3em;"><i class="bi bi-telephone-fill"></i></a>
         <a href="https://wa.me/${cleanNo}" title="Message on WhatsApp" target="_blank" class="ms-2 text-success" style="font-size:1.3em;"><i class="bi bi-whatsapp"></i></a>
       </td>
+      <td>${course.address}</td>
+      <td>${course.district}</td>
+      <td>${course.pin_code}</td>
       <td>${course.language}</td>
     </tr>`;
   });
