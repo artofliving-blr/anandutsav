@@ -97,8 +97,8 @@ function displayCourses(data) {
     const cleanNo = course.contact.toString().replace(/[^0-9]/g, "");
     html += `<tr>
       <td>${course.course_type}</td>
-      <td><a href="${course.register_link}" target="_blank" class="btn btn-primary btn-sm">Register</a></td>
-      <td>${course.start} - ${course.end}</td>
+      <td><a href="${course.register_link}" target="_blank" class="btn btn-primary btn-sm">Register(ನೋಂದಾಯಿಸಿ)</a></td>
+      <td>${course.start} to ${course.end}</td>
       <td>${course.timing}</td>
       <td>${course.teachers}</td>
       <td>
